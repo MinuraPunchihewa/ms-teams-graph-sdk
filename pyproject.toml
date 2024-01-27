@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "ms-teams-graph-sdk"
+version = "0.1.0"
+description = "The Python SDK for Interacting with Microsoft Teams through the Microsoft Graph API."
+authors = ["Minura Punchihewa <minurapunchihewa17@gmail.com>"]
+license = "GPL-3.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
