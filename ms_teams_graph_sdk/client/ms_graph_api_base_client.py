@@ -8,7 +8,6 @@ from ms_teams_graph_sdk.utilities import get_logger
 class MSGraphAPIBaseClient:
     def __init__(self, access_token: str) -> None:
         self.access_token = access_token
-        self._group_ids = None
         self.logger = get_logger(__name__)
 
     def _get_api_url(self, endpoint: str) -> str:
