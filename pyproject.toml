@@ -8,6 +8,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.8"
+msal = "^1.27.0"
+pydantic-settings = "^2.2.1"
 
 
 [build-system]
