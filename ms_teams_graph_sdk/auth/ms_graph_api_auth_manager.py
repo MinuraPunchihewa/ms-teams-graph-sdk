@@ -2,6 +2,7 @@ import msal
 import json
 from typing import Text, Optional, List
 from ms_teams_graph_sdk.settings import settings
+from ms_teams_graph_sdk.utilities import get_logger
 from ms_teams_graph_sdk.exceptions import AuthException
 from ms_teams_graph_sdk.client.ms_graph_api_base_client import MSGraphAPIBaseClient
 
@@ -12,6 +13,8 @@ class MSGraphAPIAuthManager:
         self.client_secret = client_secret
         self.tenant_id = tenant_id
         self.scopes = scopes if scopes else settings.DEFAULT_SCOPES
+
+        self.logger = get_logger(__name__)
 
     def get_access_token(self):
         return self._execute_ms_graph_api_auth_flow()
@@ -29,10 +32,15 @@ class MSGraphAPIAuthManager:
 
         if "user_code" not in device_flow:
             raise ValueError("Failed to create device flow. Err: %s" % json.dumps(device_flow, indent=4))
+        
+        # TODO: log the message and remove print
+        # self.logger.info(device_flow["message"])
+        print(device_flow["message"])
 
         result = msal_app.acquire_token_by_device_flow(device_flow)
         if "access_token" in result:
-            return result
+            # TODO: store access token and refresh token
+            return result['access_token']
         else:
             raise AuthException(f'Failed to acquire access token. Error: {result}')
 
