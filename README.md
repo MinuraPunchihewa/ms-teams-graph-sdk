@@ -1,1 +1,1 @@
-Microsoft Teams Graph SDK for Pythongit
+Microsoft Teams Graph SDK for Python
